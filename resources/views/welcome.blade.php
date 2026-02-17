@@ -440,19 +440,31 @@
         .items-grid {
             margin-top: 0.62rem;
             display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 0.62rem;
+            grid-auto-flow: column;
+            grid-auto-columns: 82%;
+            gap: 1rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding: 0.5rem 0.5rem 1.5rem;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .items-grid::-webkit-scrollbar {
+            display: none;
         }
 
         .item-card {
+            scroll-snap-align: start;
             border-radius: var(--radius-lg);
             padding: 1.25rem;
             background: var(--surface);
             border: 1px solid var(--line);
             display: flex;
             flex-direction: column;
-            gap: 1.25rem;
+            gap: 1rem;
             transition: all 0.4s cubic-bezier(0.2, 0, 0, 1);
+            position: relative;
         }
 
         .item-card:hover {
@@ -852,7 +864,10 @@
             }
 
             .items-grid {
+                grid-auto-flow: row;
                 grid-template-columns: repeat(3, minmax(0, 1fr));
+                overflow-x: visible;
+                padding: 0;
             }
 
             .order-drawer {
