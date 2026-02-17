@@ -38,7 +38,7 @@
         }
     @endphp
 
-    <div class="">
+    <div class="layout-wrapper">
         <main class="main-content">
             <div class="app-container">
                 @if (session('success'))
