@@ -71,7 +71,7 @@
                         </button>
                     </div>
                     <h1>Hey,<br>what's up?</h1>
-                    <p>Pick from featured items, browse categories, then place your order in seconds.</p>
+                    {{-- <p>Pick from featured items, browse categories, then place your order in seconds.</p> --}}
                 </header>
 
                 @if ($featuredItems->isNotEmpty())
