@@ -27,7 +27,7 @@
             --shadow-sm: 0 1px 4px 0 rgb(0 0 0 / 0.1);
             --shadow-lg: 0 20px 50px -10px rgba(0, 0, 0, 0.15);
             /* Scaling Multiplier */
-            --scale: 1.5;
+            /* --scale: 1.5; */
         }
 
         [data-theme="dark"] {
