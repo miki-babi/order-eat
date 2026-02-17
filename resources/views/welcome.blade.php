@@ -170,11 +170,12 @@
                                                 <p class="item-desc">
                                                     {{ $item->description ?: 'Freshly prepared and ready to order.' }}
                                                 </p>
+                                                 <p class="item-price">${{ number_format((float) $item->price, 2) }}
+                                                </p>
                                             </div>
 
                                             <div class="item-foot">
-                                                <p class="item-price">${{ number_format((float) $item->price, 2) }}
-                                                </p>
+                                               
                                                 <div class="qty-inline">
                                                     <button type="button" class="qty-btn" data-qty-action="decrease"
                                                         data-item-id="{{ $item->id }}"
