@@ -1800,6 +1800,9 @@
                 document.body.classList.add('drawer-open');
                 orderDrawer.setAttribute('aria-hidden', 'false');
                 openDrawerButton?.setAttribute('aria-expanded', 'true');
+
+                // Hide floating bar when drawer opens
+                floatingBar.classList.remove('is-visible');
             };
 
             const closeDrawer = () => {
@@ -1808,6 +1811,9 @@
                 document.body.classList.remove('drawer-open');
                 orderDrawer.setAttribute('aria-hidden', 'true');
                 openDrawerButton?.setAttribute('aria-expanded', 'false');
+
+                // Re-evaluate floating bar visibility
+                renderSummary();
             };
 
             // Expose globally for the onclick handler
@@ -1917,7 +1923,8 @@
                     }
                 });
 
-                floatingBar.classList.toggle('is-visible', selectedCount > 0);
+                const isDrawerOpen = orderDrawer.classList.contains('is-open');
+                floatingBar.classList.toggle('is-visible', selectedCount > 0 && !isDrawerOpen);
 
                 if (submitButton) {
                     submitButton.disabled = selectedCount === 0 || hasNoBranches;
