@@ -60,6 +60,14 @@
             overflow: hidden;
         }
 
+        /* Safe area support for mobile devices */
+        :root {
+            --safe-top: env(safe-area-inset-top, 0px);
+            --safe-bottom: env(safe-area-inset-bottom, 0px);
+            --safe-left: env(safe-area-inset-left, 0px);
+            --safe-right: env(safe-area-inset-right, 0px);
+        }
+
         .layout-wrapper {
             display: grid;
             grid-template-columns: 1fr;
@@ -186,6 +194,7 @@
             color: var(--text);
             font-weight: 600;
             margin-bottom: 2rem;
+            margin-top: var(--safe-top);
         }
 
         .hero-badge-mark {
@@ -363,13 +372,19 @@
 
         .category-tabs-wrap {
             position: sticky;
-            top: 0.35rem;
-            z-index: 7;
-            background: rgba(255, 255, 255, 0.86);
-            backdrop-filter: blur(6px);
-            border-radius: 16px;
+            top: calc(0.5rem + var(--safe-top));
+            z-index: 100;
+            background: var(--surface);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: var(--radius-md);
             border: 1px solid var(--line);
-            margin: 0.4rem 0.35rem 0;
+            margin: 0.5rem 0.5rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        }
+
+        [data-theme="dark"] .category-tabs-wrap {
+            background: rgba(30, 41, 59, 0.8);
         }
 
         .category-tabs {
@@ -382,15 +397,20 @@
 
         .category-tab {
             border: 1px solid var(--line);
-            background: #fff;
-            color: #3e3e3e;
+            background: var(--surface);
+            color: var(--text);
             border-radius: 999px;
-            padding: 0.38rem 0.74rem;
+            padding: 0.6rem 1rem;
             text-decoration: none;
             white-space: nowrap;
-            font-size: 0.84rem;
-            font-weight: 600;
-            transition: border-color 120ms ease, background-color 120ms ease;
+            font-size: 0.875rem;
+            font-weight: 700;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            /* Better touch target */
         }
 
         .category-tab.is-active {
@@ -510,15 +530,19 @@
         }
 
         .qty-btn {
-            width: 28px;
-            height: 28px;
+            width: 36px;
+            height: 36px;
             border: 1px solid var(--line);
             border-radius: 999px;
-            background: #fff;
-            color: #333;
+            background: var(--surface);
+            color: var(--text);
             cursor: pointer;
-            font-size: 0.95rem;
+            font-size: 1.125rem;
             line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
         }
 
         .qty-btn:hover {
@@ -545,11 +569,11 @@
         .floating-order-bar {
             position: fixed;
             left: 50%;
-            bottom: 0.75rem;
-            width: min(760px, calc(100% - 1rem));
-            z-index: 20;
-            transform: translate(-50%, calc(100% + 1rem));
-            transition: transform 220ms ease;
+            bottom: max(0.75rem, var(--safe-bottom));
+            width: min(760px, calc(100% - 1.5rem));
+            z-index: 1000;
+            transform: translate(-50%, calc(100% + 2rem));
+            transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1);
             pointer-events: none;
         }
 
@@ -682,11 +706,12 @@
             width: 100%;
             border: 2px solid var(--line);
             border-radius: var(--radius-md);
-            background: #fff;
+            background: var(--surface);
             color: var(--text);
             padding: 1rem 1.25rem;
             font: inherit;
-            font-size: 1rem;
+            font-size: 16px;
+            /* Prevents iOS auto-zoom */
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -841,7 +866,7 @@
 
             .order-drawer.is-open {
                 transform: translate(-50%, 0);
-                bottom: 0.6rem;
+                bottom: max(0.6rem, var(--safe-bottom));
             }
         }
 
@@ -1472,7 +1497,7 @@
                     <label class="field">
                         Payment Method
                         <select name="payment_method">
-                            <option value="cash" @selected(old('payment_method') === 'cash') >Cash</option>
+                            <option value="cash" @selected(old('payment_method') === 'cash')>Cash</option>
                             <option value="transfer" @selected(old('payment_method') === 'transfer')>Transfer</option>
                         </select>
                         @error('payment_method')
@@ -1654,8 +1679,7 @@
 
                 try {
                     const response = await fetch(
-                        `${telegramPrefillEndpoint}?telegram_user_id=${encodeURIComponent(String(telegramUserId))}`,
-                        {
+                        `${telegramPrefillEndpoint}?telegram_user_id=${encodeURIComponent(String(telegramUserId))}`, {
                             headers: {
                                 'Accept': 'application/json',
                             },
