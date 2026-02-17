@@ -70,16 +70,8 @@ body.drawer-open {
     --safe-right: env(safe-area-inset-right, 0px);
 }
 
-.layout-wrapper {
-    display: grid;
-    grid-template-columns: 1fr;
-    min-height: 100vh;
-    width: 100%;
-
-}
-
 .main-content {
-    padding: 1rem;
+    /* padding: 1rem; */
     max-width: 100%;
     margin: 0 auto;
 }
