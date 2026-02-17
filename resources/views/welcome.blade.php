@@ -21,11 +21,13 @@
             --red: #e11d48;
             --yellow: #facc15;
             --yellow-strong: #eab308;
-            --radius-lg: 24px;
-            --radius-md: 16px;
-            --radius-sm: 12px;
-            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-            --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            --radius-lg: 32px;
+            --radius-md: 24px;
+            --radius-sm: 16px;
+            --shadow-sm: 0 1px 4px 0 rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 20px 50px -10px rgba(0, 0, 0, 0.15);
+            /* Scaling Multiplier */
+            --scale: 1.5;
         }
 
         [data-theme="dark"] {
@@ -212,8 +214,8 @@
         .hero h1 {
             margin: 0;
             font-family: "Sora", sans-serif;
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
-            line-height: 1.05;
+            font-size: clamp(3.5rem, 12vw, 6rem);
+            line-height: 1;
             letter-spacing: -0.05em;
             font-weight: 800;
         }
@@ -222,8 +224,8 @@
             margin: 1.5rem 0 0;
             color: var(--muted);
             max-width: 42ch;
-            font-size: 1.125rem;
-            line-height: 1.6;
+            font-size: 1.5rem;
+            line-height: 1.4;
         }
 
         .section {
@@ -242,7 +244,7 @@
         .section-head h2 {
             margin: 0;
             font-family: "Sora", sans-serif;
-            font-size: 1.75rem;
+            font-size: 2.5rem;
             letter-spacing: -0.03em;
             font-weight: 800;
         }
@@ -306,9 +308,9 @@
 
         .featured-title {
             margin: 0;
-            font-size: 1.25rem;
+            font-size: 2rem;
             font-weight: 800;
-            line-height: 1.2;
+            line-height: 1.1;
             font-family: "Sora", sans-serif;
             letter-spacing: -0.02em;
         }
@@ -333,7 +335,7 @@
         .featured-price {
             margin: 0;
             font-weight: 800;
-            font-size: 1.25rem;
+            font-size: 2rem;
             color: var(--text);
             font-family: "Sora", sans-serif;
         }
@@ -401,21 +403,21 @@
         }
 
         .category-tab {
-            border: 1px solid var(--line);
+            border: 2px solid var(--line);
             background: var(--surface);
             color: var(--text);
             border-radius: 999px;
-            padding: 0.75rem 1.25rem;
+            padding: 1.5rem 2.5rem;
             text-decoration: none;
             white-space: nowrap;
-            font-size: 1rem;
-            font-weight: 700;
+            font-size: 1.5rem;
+            font-weight: 800;
             transition: all 0.2s;
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 48px;
-            /* Extra touch target */
+            min-height: 80px;
+            /* Massive touch target */
         }
 
         .category-tab.is-active {
@@ -507,23 +509,23 @@
 
         .item-name {
             margin: 0;
-            font-size: 1.25rem;
+            font-size: 2.25rem;
             font-weight: 800;
-            line-height: 1.2;
+            line-height: 1.1;
             font-family: "Sora", sans-serif;
             letter-spacing: -0.01em;
         }
 
         .item-desc {
-            margin: 0.5rem 0 0;
+            margin: 0.75rem 0 0;
             color: var(--muted);
-            font-size: 0.9375rem;
-            line-height: 1.6;
+            font-size: 1.25rem;
+            line-height: 1.5;
             display: -webkit-box;
-            -webkit-line-clamp: 2;
+            -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
-            min-height: 3.2em;
+            min-height: 4.5em;
         }
 
         .item-foot {
@@ -536,25 +538,25 @@
 
         .item-price {
             margin: 0;
-            font-size: 0.94rem;
-            font-weight: 700;
+            font-size: 1.75rem;
+            font-weight: 800;
         }
 
         .qty-inline {
             display: inline-flex;
             align-items: center;
-            gap: 0.28rem;
+            gap: 1rem;
         }
 
         .qty-btn {
-            width: 36px;
-            height: 36px;
-            border: 1px solid var(--line);
-            border-radius: 999px;
+            width: 72px;
+            height: 72px;
+            border: 2px solid var(--line);
+            border-radius: 24px;
             background: var(--surface);
             color: var(--text);
             cursor: pointer;
-            font-size: 1.125rem;
+            font-size: 2.25rem;
             line-height: 1;
             display: flex;
             align-items: center;
@@ -567,10 +569,10 @@
         }
 
         .qty-value {
-            min-width: 20px;
+            min-width: 40px;
             text-align: center;
-            font-size: 0.86rem;
-            font-weight: 700;
+            font-size: 1.5rem;
+            font-weight: 800;
         }
 
         .empty-state {
@@ -602,16 +604,16 @@
         .floating-order-trigger {
             width: 100%;
             border: 0;
-            border-radius: 24px;
+            border-radius: 32px;
             background: #101010;
             color: #fff;
-            padding: 1.125rem 1.5rem;
+            padding: 2rem 2.5rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 0.75rem;
+            gap: 1.5rem;
             cursor: pointer;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
         }
 
         .floating-meta {
@@ -621,25 +623,25 @@
         }
 
         .floating-meta strong {
-            font-size: 1.125rem;
-            font-weight: 700;
-            line-height: 1.2;
+            font-size: 1.75rem;
+            font-weight: 800;
+            line-height: 1.1;
         }
 
         .floating-meta span {
             color: rgba(255, 255, 255, 0.76);
-            font-size: 0.9375rem;
+            font-size: 1.25rem;
         }
 
         .floating-cta {
             border-radius: 999px;
             background: var(--yellow);
             color: #101010;
-            font-size: 1rem;
+            font-size: 1.5rem;
             font-weight: 800;
-            padding: 0.6rem 1.25rem;
+            padding: 0.8rem 1.75rem;
             white-space: nowrap;
-            box-shadow: 0 4px 0 var(--yellow-strong);
+            box-shadow: 0 6px 0 var(--yellow-strong);
         }
 
         .drawer-overlay {
@@ -813,7 +815,7 @@
 
         .summary-total strong {
             font-family: "Sora", "Outfit", sans-serif;
-            font-size: 1.46rem;
+            font-size: 2.5rem;
             line-height: 1;
             letter-spacing: -0.02em;
         }
@@ -1050,54 +1052,55 @@
         }
 
         .modal-icon {
-            width: 80px;
-            height: 80px;
+            width: 140px;
+            height: 140px;
             border-radius: 999px;
             display: grid;
             place-items: center;
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
         }
 
         .modal-icon.success {
             background: #ecfdf5;
             color: #10b981;
-            box-shadow: 0 0 0 10px #f0fdf4;
+            box-shadow: 0 0 0 15px #f0fdf4;
         }
 
         .modal-icon.error {
             background: #fef2f2;
             color: #ef4444;
-            box-shadow: 0 0 0 10px #fef2f2;
+            box-shadow: 0 0 0 15px #fef2f2;
         }
 
         .modal-title {
             font-family: "Sora", sans-serif;
-            font-size: 2rem;
+            font-size: 3.5rem;
             font-weight: 800;
             margin: 0;
             letter-spacing: -0.04em;
+            line-height: 1;
         }
 
         .modal-desc {
             color: var(--muted);
-            line-height: 1.6;
-            margin: 0;
-            font-size: 1.125rem;
+            line-height: 1.4;
+            margin: 0.5rem 0 0;
+            font-size: 1.75rem;
         }
 
         .modal-btn {
             width: 100%;
-            padding: 1.25rem;
-            border-radius: var(--radius-md);
+            padding: 2rem;
+            border-radius: 24px;
             background: var(--text);
             color: var(--bg);
             font-weight: 800;
-            font-size: 1.125rem;
+            font-size: 1.75rem;
             border: none;
             cursor: pointer;
             transition: all 0.2s;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
         }
 
         .modal-btn:hover {
