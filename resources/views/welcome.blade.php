@@ -389,10 +389,15 @@
 
         .category-tabs {
             display: flex;
-            gap: 0.5rem;
+            gap: 0.75rem;
             overflow-x: auto;
-            padding: 0.45rem;
-            scrollbar-width: thin;
+            padding: 0.75rem;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .category-tabs::-webkit-scrollbar {
+            display: none;
         }
 
         .category-tab {
@@ -400,17 +405,17 @@
             background: var(--surface);
             color: var(--text);
             border-radius: 999px;
-            padding: 0.6rem 1rem;
+            padding: 0.75rem 1.25rem;
             text-decoration: none;
             white-space: nowrap;
-            font-size: 0.875rem;
+            font-size: 1rem;
             font-weight: 700;
             transition: all 0.2s;
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 44px;
-            /* Better touch target */
+            min-height: 48px;
+            /* Extra touch target */
         }
 
         .category-tab.is-active {
@@ -597,15 +602,16 @@
         .floating-order-trigger {
             width: 100%;
             border: 0;
-            border-radius: 20px;
+            border-radius: 24px;
             background: #101010;
             color: #fff;
-            padding: 0.7rem 0.8rem;
+            padding: 1.125rem 1.5rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 0.6rem;
+            gap: 0.75rem;
             cursor: pointer;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
         }
 
         .floating-meta {
@@ -615,23 +621,25 @@
         }
 
         .floating-meta strong {
-            font-size: 0.9rem;
+            font-size: 1.125rem;
             font-weight: 700;
+            line-height: 1.2;
         }
 
         .floating-meta span {
             color: rgba(255, 255, 255, 0.76);
-            font-size: 0.82rem;
+            font-size: 0.9375rem;
         }
 
         .floating-cta {
             border-radius: 999px;
             background: var(--yellow);
             color: #101010;
-            font-size: 0.84rem;
-            font-weight: 700;
-            padding: 0.4rem 0.76rem;
+            font-size: 1rem;
+            font-weight: 800;
+            padding: 0.6rem 1.25rem;
             white-space: nowrap;
+            box-shadow: 0 4px 0 var(--yellow-strong);
         }
 
         .drawer-overlay {
