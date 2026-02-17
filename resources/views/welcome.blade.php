@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Digital Menu</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -56,6 +56,8 @@
             color: var(--text);
             font-family: "Outfit", "Segoe UI", sans-serif;
             overflow-x: hidden;
+            width: 100%;
+            position: relative;
         }
 
         body.drawer-open {
@@ -668,16 +670,42 @@
             background: #fff;
             border-radius: 32px 32px 0 0;
             border-top: 1px solid var(--line);
-            max-height: min(92vh, 1000px);
-            transform: translateY(104%);
+            height: 100vh;
+            max-height: 100vh;
+            transform: translateY(100%);
             transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1);
             display: grid;
-            grid-template-rows: auto 1fr;
+            grid-template-rows: auto auto 1fr;
             box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.1);
+            touch-action: none;
+            /* Let JS handle touch */
         }
 
         .order-drawer.is-open {
-            transform: translateY(0);
+            transform: translateY(40%);
+            /* Half screen by default */
+        }
+
+        .order-drawer.is-full {
+            transform: translateY(0) !important;
+            border-radius: 0;
+        }
+
+        .drawer-drag-handle {
+            width: 100%;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: grab;
+            padding-top: 8px;
+        }
+
+        .handle-bar {
+            width: 40px;
+            height: 4px;
+            background: var(--line);
+            border-radius: 2px;
         }
 
         .drawer-head {
