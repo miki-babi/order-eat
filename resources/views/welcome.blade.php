@@ -74,6 +74,8 @@
             display: grid;
             grid-template-columns: 1fr;
             min-height: 100vh;
+            width: 100%;
+
         }
 
         .main-content {
